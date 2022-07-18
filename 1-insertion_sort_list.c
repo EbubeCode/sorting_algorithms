@@ -40,37 +40,28 @@ void insert(listint_t *p, listint_t *e)
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *temp, *e, *c;
-	int i;
 
 	if (list == NULL || *list == NULL)
 		return;
 	e = (*list)->next;
 	while (e)
 	{
-		print_list(*list);
-		i = 0;
 		c = e->prev;
-		while (c && c->n > e->n)
+		temp = e;
+		e = temp->next;
+		while (c && c->n > temp->n)
 		{
-			c = c->prev;
-			i++;
-		}
-		if (i)
-		{
-			temp = e;
-			e = temp->next;
 			remov(temp);
-			if (c == NULL)
+			c = c->prev;
+			if (c)
+				insert(c, temp);
+			else
 			{
 				temp->next = *list;
 				(*list)->prev = temp;
 				*list = temp;
 			}
-			else
-				insert(c, temp);
 			print_list(*list);
 		}
-		else
-			e = e->next;
 	}
 }
