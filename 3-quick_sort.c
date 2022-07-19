@@ -63,7 +63,7 @@ void q_sort(int *array, int low, int high, size_t size)
  *
  * @array: the array to sort
  * @size: the size of the array
- */
+ */~/Documents/ALX/ALX_SE/sorting_algorithms
 void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
